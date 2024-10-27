@@ -6,13 +6,23 @@ on:
       - main
 
 jobs:
-  print-messages:
+  print-variables-job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print environment variable
-        run: echo "This is the environment variable: ${{ env.MY_VAR }}"
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Print secret
-        run: echo "This is the secret: ${{ secrets.MY_SECRET }}"
+      - name: Display environment variable
+        run: |
+          echo "The environment variable is: $MY_VAR"
+        env:
+          MY_VAR: ${{ env.MY_VAR }}  # Aquí tomamos la variable desde el entorno de GitHub Actions
+
+      - name: Display secret variable
+        run: |
+          echo "The secret variable is: $MY_SECRET"
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}  # Aquí tomamos el secreto desde los secretos de GitHub
+
 
