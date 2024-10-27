@@ -1,0 +1,16 @@
+name: Print Messages on PR Opened
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  print-messages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print environment variable
+        run: echo "This is the environment variable: ${{ env.MY_VAR }}"
+      - name: Print secret
+        run: echo "This is the secret: ${{ secrets.MY_SECRET }}"
+
