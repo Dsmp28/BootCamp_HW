@@ -11,12 +11,8 @@ jobs:
 
     steps:
       - name: Print environment variable
-        env:
-          MY_VAR: ${{ env.MY_VAR }}
-        run: echo "This is the environment variable: $MY_VAR"
+        run: echo "This is the environment variable: ${{ env.MY_VAR }}"
 
       - name: Print secret
-        env:
-          MY_SECRET: ${{ secrets.MY_SECRET }}
-        run: echo "This is the secret: $MY_SECRET"
+        run: echo "This is the secret: ${{ secrets.MY_SECRET }}"
 
